@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this);
                 View view1=getLayoutInflater().inflate(R.layout.login_layout,null);
+                builder.setView(view1);
+                AlertDialog dialog=builder.create();
 
                 EditText email=view1.findViewById(R.id.email);
                 EditText password=view1.findViewById(R.id.password);
@@ -31,10 +33,10 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Toast.makeText(MainActivity.this, "Email: "+email.getText().toString()+"Password: "+password.getText().toString() , Toast.LENGTH_SHORT).show();
+                         dialog.cancel();
                     }
                 });
-                builder.setView(view1);
-                AlertDialog dialog=builder.create();
+
                 dialog.show();
             }
         });
